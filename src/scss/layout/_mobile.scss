@@ -1,0 +1,82 @@
+//===============================================================//
+//===// Incorporating required mobile layout scss variables //===//
+//===============================================================//
+
+@use '../abstracts' as *;
+
+//======================================//
+//===// Responsive layout - mobile //===//
+//======================================//
+
+@include mobile {
+  //===// Others //===//
+
+  .btn {
+    font-size: 1.05rem;
+  }
+
+  //===// Main //===//
+
+  //===// Home //===//
+
+  //===// Header
+
+  .header {
+    &__title {
+      font-size: 2.15rem;
+    }
+
+    &__desc {
+      font-size: 1.05rem;
+    }
+  }
+
+  //===// Quiz settings
+
+  .quiz-options {
+    &__size,
+    &__category {
+      max-width: 100%;
+    }
+
+    //===// Quiz Size
+
+    &__size > span {
+      font-size: 1.5rem;
+    }
+
+    //===// Quiz Category
+
+    &__category {
+      & label,
+      & select {
+        font-size: 1.2rem;
+      }
+
+      & select {
+        width: 6rem;
+      }
+    }
+  }
+
+  //===// Quiz //===//
+
+  .quiz__finish {
+    flex-direction: row;
+    align-items: baseline;
+    justify-self: right;
+    margin-right: 1rem;
+  }
+
+  //===// Footer //===//
+
+  .footer {
+    & > * {
+      font-size: 0.75rem;
+    }
+
+    &__source {
+      font-size: 1.05rem;
+    }
+  }
+}

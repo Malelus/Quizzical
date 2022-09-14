@@ -1,0 +1,339 @@
+//================================================================//
+//===// Incorporating required default layout scss variables //===//
+//================================================================//
+
+@use '../abstracts' as *;
+
+//============================//
+//===// Layout - default //===//
+//============================//
+
+//===// Root //===//
+
+:root {
+  --transition-duration: 250ms;
+}
+
+//===// Scrollbar //===//
+
+::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: color(accent-clr);
+}
+
+//===// Text selection //===//
+
+::selection {
+  background-color: color(accent-clr);
+  color: color(light-clr);
+}
+
+//===// Body //===//
+
+body {
+  background-color: color(light-clr);
+  color: color(dark-clr);
+  font-family: font(main);
+  line-height: 1.5;
+}
+
+//===// Container //===//
+
+.container-main {
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 100vh;
+
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+  }
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+//===// Blobs //===//
+
+.blob {
+  position: fixed;
+  z-index: -2;
+}
+
+.blob-tl {
+  top: 0;
+  left: 0;
+  translate: -200px -200px;
+}
+
+.blob-tr {
+  top: 0;
+  right: 0;
+}
+
+.blob-bl {
+  bottom: 0;
+  left: 0;
+}
+
+.blob-br {
+  bottom: 0;
+  right: 0;
+  translate: 200px 200px;
+}
+
+//===// Theme toggle //===//
+
+.theme-toggle-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.7rem;
+  z-index: 2;
+  background-color: color(light-accent-clr);
+  color: color(accent-clr);
+}
+
+//===// Main //===//
+
+//===// Home //===//
+
+//===// Header
+
+.header {
+  text-align: center;
+
+  &__title {
+    font-family: font(accent);
+  }
+
+  &__desc {
+    margin-block: 0.75rem 1.75rem;
+  }
+}
+
+//===// Quiz settings
+
+.quiz-options {
+  margin-top: 3.5rem;
+
+  & > section + section {
+    margin-top: 1.5rem;
+  }
+
+  &__size,
+  &__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 95%;
+    background-color: color(light-accent-clr);
+    border: 1px solid color(accent-clr);
+    border-radius: 0.7rem;
+    padding: 1rem 2.5rem;
+    margin-inline: auto;
+  }
+
+  //===// Quiz Size
+
+  &__size {
+    gap: 2rem;
+
+    & > span {
+      user-select: none;
+      font-size: 1.35rem;
+      font-family: font(mono);
+    }
+  }
+
+  //===// Quiz Category
+
+  &__category {
+    gap: 1rem;
+
+    & label,
+    & select {
+      font-size: 1.15rem;
+      color: color(dark-clr);
+    }
+
+    & select {
+      width: 5rem;
+      appearance: none;
+      background-color: color(light-accent-clr);
+      text-align: center;
+      text-overflow: ellipsis;
+      padding: 0.35em;
+    }
+  }
+}
+
+//===// Quiz //===//
+
+.quiz {
+  &__category {
+    line-height: initial;
+    margin-block: 5rem 2.5rem;
+  }
+
+  &__questions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__action {
+    display: grid;
+    margin-block: 2rem 4.5rem;
+    transition: margin var(--transition-duration) ease-in-out;
+  }
+
+  &__btn {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__check {
+    justify-self: center;
+  }
+
+  &__reset {
+    position: fixed;
+    bottom: 0.5rem;
+    right: 0.7rem;
+  }
+
+  &__finish {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    gap: 1rem;
+
+    &__score {
+      user-select: none;
+    }
+  }
+}
+
+//===// Question
+
+.question {
+  border-bottom: 1.6px solid color(question-line);
+  max-width: 80ch;
+  padding-bottom: 2rem;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  &__title {
+    user-select: none;
+  }
+
+  &__answers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  &__answer {
+    &-input {
+      display: none;
+    }
+
+    &-label {
+      user-select: none;
+      white-space: nowrap;
+      background-color: color(light-clr);
+      border: 0.8px solid color(accent-clr);
+      border-radius: 0.5rem;
+      padding: 0.25rem 1rem;
+      transition: background-color var(--transition-duration) ease-in-out;
+    }
+
+    &-label:hover {
+      background-color: color(hover);
+    }
+
+    &-input:checked + &-label {
+      background-color: color(question-answer-given);
+    }
+  }
+
+  &__category {
+    margin-block: 1.5rem -1rem;
+    font-size: 1rem;
+  }
+}
+
+#question-answer-proper {
+  background-color: color(question-answer-proper);
+}
+
+#question-answer-correct {
+  background-color: color(question-answer-correct);
+}
+
+#question-answer-incorrect {
+  background-color: color(question-answer-incorrect);
+}
+
+#question-answer-neutral {
+  color: color(question-answer-neutral);
+}
+
+//===// Footer //===//
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: fit-content;
+  overflow: hidden;
+  background-color: color(light-accent-clr);
+  border: 1px solid color(accent-clr);
+  border-bottom: none;
+  border-left: none;
+  border-top-right-radius: 0.7rem;
+  padding: 0.5rem;
+  translate: -76.5%;
+  transition: translate var(--transition-duration) ease-in-out;
+
+  & > * {
+    font-size: 0.7rem;
+  }
+
+  &--visible {
+    translate: 0;
+  }
+
+  &__toggle {
+    background-color: color(light-accent-clr);
+    color: color(accent-clr);
+  }
+
+  &__source {
+    position: fixed;
+    left: 5.75rem;
+    bottom: 0.5rem;
+    z-index: 0;
+  }
+}

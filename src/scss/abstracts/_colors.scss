@@ -1,0 +1,58 @@
+//==================//
+//===// Colors //===//
+//==================//
+
+body {
+  --light-clr: hsl(220 43% 97%);
+  --dark-clr: hsl(231 42% 28%);
+
+  --accent-clr: hsl(230 34% 46%);
+  --light-accent-clr: hsl(0 0% 99%);
+
+  --hover: hsl(210 65% 96%);
+
+  --question-line: hsl(231 41% 90%);
+  --question-answer-proper: hsl(133 46% 71%);
+  --question-answer-correct: hsl(133 46% 51%);
+  --question-answer-incorrect: hsl(0 82% 85%);
+  --question-answer-neutral: hsl(229 30% 72%);
+  --question-answer-given: hsl(210 65% 92%);
+}
+
+body.dark {
+  --dark-clr: hsl(220 43% 93%);
+  --light-clr: hsl(231 42% 28%);
+
+  --accent-clr: hsl(0 0% 95%);
+  --light-accent-clr: hsl(230 34% 46%);
+
+  --hover: hsl(210 65% 26%);
+
+  --question-line: hsl(231 41% 90%);
+  --question-answer-proper: hsl(133 46% 41%);
+  --question-answer-correct: hsl(133 46% 21%);
+  --question-answer-incorrect: hsl(0 82% 55%);
+  --question-answer-neutral: hsl(229 30% 62%);
+  --question-answer-given: hsl(210 65% 62%);
+
+  .blob {
+    filter: brightness(70%);
+  }
+}
+
+$color: (
+  'light-clr': var(--light-clr),
+  'dark-clr': var(--dark-clr),
+  //
+  'accent-clr': var(--accent-clr),
+  'light-accent-clr': var(--light-accent-clr),
+  //
+  'hover': var(--hover),
+  //
+  'question-line': var(--question-line),
+  'question-answer-proper': var(--question-answer-proper),
+  'question-answer-correct': var(--question-answer-correct),
+  'question-answer-incorrect': var(--question-answer-incorrect),
+  'question-answer-neutral': var(--question-answer-neutral),
+  'question-answer-given': var(--question-answer-given),
+);

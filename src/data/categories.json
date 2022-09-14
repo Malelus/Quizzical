@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "value": 0,
+    "name": "Any",
+    "description": "Test your knowledge in our quiz"
+  },
+  {
+    "id": 2,
+    "value": 21,
+    "name": "Sports",
+    "description": "Quiz about sports"
+  },
+  {
+    "id": 3,
+    "value": 23,
+    "name": "History",
+    "description": "Quiz about history"
+  },
+  {
+    "id": 4,
+    "value": 27,
+    "name": "Animals",
+    "description": "Quiz about animals"
+  },
+  {
+    "id": 5,
+    "value": 9,
+    "name": "General Knowledge",
+    "description": "Quiz about general knowledge"
+  },
+  {
+    "id": 6,
+    "value": 15,
+    "name": "Entertaiment: Video Games",
+    "description": "Quiz about video games"
+  },
+  {
+    "id": 7,
+    "value": 32,
+    "name": "Entertaiment: Cartoon & Animations",
+    "description": "Quiz about cartoon & animations"
+  }
+]

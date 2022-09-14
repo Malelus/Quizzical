@@ -1,79 +1,65 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import Start from './components/Start';
-import Quiz from './components/Quiz';
+import Header from './components/Start/Header';
+import Size from './components/Start/Size';
+import Category from './components/Start/Category';
+
+import Quiz from './components/Quiz/Quiz';
+
+import Footer from './components/Footer';
+
+import categories from './data/categories.json';
 
 const App = () => {
-  const [start, setStart] = useState(true);
+  // Change the site theme and save it to local storage
+  const [darkTheme, setDarkTheme] = useState(() => JSON.parse(localStorage.getItem('darkTheme')) || false);
 
-  const [amount, setAmount] = useState(5);
-  const [category, setCategory] = useState(0);
+  useEffect(() => {
+    document.body.classList.toggle('dark', darkTheme);
 
-  const categories = [
-    { value: 0, name: 'Any', description: 'Test your knowledge in our quiz' },
-    { value: 21, name: 'Sports', description: 'Quiz about sports' },
-    { value: 23, name: 'History', description: 'Quiz about history' },
-    { value: 27, name: 'Animals', description: 'Quiz about animals' },
-    { value: 9, name: 'General Knowledge', description: 'Quiz about general knowledge' },
-    { value: 15, name: 'Entertaiment: Video Games', description: 'Quiz about video games' },
-    { value: 32, name: 'Entertaiment: Cartoon & Animations', description: 'Quiz about cartoon & animations' },
-  ];
+    localStorage.setItem('darkTheme', JSON.stringify(darkTheme));
+  }, [darkTheme]);
+
+  const toggleTheme = () => {
+    darkTheme ? setDarkTheme(false) : setDarkTheme(true);
+  };
+
+  // Quiz settings
+  const [start, setStart] = useState(false);
+
+  const [quizSize, setQuizSize] = useState(5);
+  const [quizCategory, setQuizCategory] = useState(1);
+
+  const categoryDetails = categories.find((category) => category.id === quizCategory);
 
   return (
-    <div className='blob-container'>
-      {start ? (
-        <main>
-          <Start setStart={setStart} description={categories.find((item) => item.value == category).description} />
+    <>
+      <button className='theme-toggle-btn btn btn--small' onClick={() => toggleTheme((prev) => !prev)}>
+        {darkTheme ? <i className='fa-solid fa-moon' /> : <i className='fa-solid fa-sun' />}
+      </button>
 
-          <div className='options-wrapper'>
-            <section className='amount-container'>
-              <button className='btn btn--small' onClick={() => setAmount((prev) => (amount > 1 ? prev - 1 : prev))}>
-                <i className='fa-solid fa-minus'></i>
-              </button>
+      <div className='container-main'>
+        {start ? (
+          <Quiz quizSize={quizSize} categoryDetails={categoryDetails} setStart={setStart} />
+        ) : (
+          <main>
+            <Header setStart={setStart} description={categoryDetails.description} />
 
-              <span>{amount}</span>
-
-              <button className='btn btn--small' onClick={() => setAmount((prev) => (amount < 25 ? prev + 1 : prev))}>
-                <i className='fa-solid fa-plus'></i>
-              </button>
-
-              <button className='btn btn--small' onClick={() => setAmount(5)}>
-                <i className='fa-solid fa-arrow-rotate-right rotate'></i>
-              </button>
+            <section className='quiz-options'>
+              <Size quizSize={quizSize} setQuizSize={setQuizSize} />
+              <Category categories={categories} quizCategory={quizCategory} setQuizCategory={setQuizCategory} />
             </section>
+          </main>
+        )}
 
-            <section className='category-container'>
-              <label htmlFor='category'>Choose category:</label>
+        <Footer />
 
-              <select id='category' onChange={(event) => setCategory(event.target.value)} value={category}>
-                {categories.map((category, index) => (
-                  <option key={index} value={category.value}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
-            </section>
-          </div>
-        </main>
-      ) : (
-        <Quiz
-          amount={amount}
-          category={category}
-          categoryName={categories.find((element) => element.value == category).name}
-          setStart={setStart}
-        />
-      )}
-
-      <img src='/images/blob-tr.png' alt='blob' className='blob blob-tr' />
-      <img src='/images/blob-tl.png' alt='blob' className='blob blob-tl' />
-      <img src='/images/blob-bl.png' alt='blob' className='blob blob-bl' />
-      <img src='/images/blob-br.png' alt='blob' className='blob blob-br' />
-      <footer className='footer'>
-        <a href='https://opentdb.com/' target='_blank' className='footer__link'>
-          Questions Source
-        </a>
-      </footer>
-    </div>
+        <img src='/blobs/blob-tr.png' alt='blob' className='blob blob-tr' />
+        <img src='/blobs/blob-tl.png' alt='blob' className='blob blob-tl' />
+        <img src='/blobs/blob-bl.png' alt='blob' className='blob blob-bl' />
+        <img src='/blobs/blob-br.png' alt='blob' className='blob blob-br' />
+      </div>
+    </>
   );
 };
 

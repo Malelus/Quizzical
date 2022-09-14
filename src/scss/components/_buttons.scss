@@ -1,0 +1,61 @@
+//=========================================================//
+//===// Incorporating required buttons scss variables //===//
+//=========================================================//
+
+@use '../abstracts' as *;
+
+//===================//
+//===// Buttons //===//
+//===================//
+
+.btn {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  background-color: color(accent-clr);
+  border: none;
+  border-radius: 0.7rem;
+  outline: none;
+  box-shadow: 0px 3px 8px rgb(0 0 0 / 0.18);
+  color: color(light-clr);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 1em 2em;
+  transition: box-shadow 250ms ease-in-out;
+
+  &--small {
+    padding: 1em 1.35em;
+  }
+
+  &--icon {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+  }
+
+  & i {
+    transition: transform 250ms ease-in-out;
+  }
+
+  &:hover i,
+  &:focus i {
+    transform: scale(1.2);
+
+    &.rotate {
+      transform: rotate(360deg) scale(1.2);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 5px 5px 10px -3px rgb(0 0 0 / 0.2), 0px 3px 8px rgb(0 0 0 / 0.18);
+  }
+
+  &:active {
+    box-shadow: inset 5px 5px 10px -3px rgb(0 0 0 / 0.7);
+  }
+}
