@@ -1,4 +1,4 @@
-# Quizzical - test your knowledge about anything!
+# Quizzical - Test your knowledge of everything with our quiz app!
 
 > ### [Page link](https://malelus-quizzical.netlify.app/)
 
