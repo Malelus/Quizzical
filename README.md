@@ -1,6 +1,6 @@
 # Quizzical - Test your knowledge of everything with our quiz app!
 
-> ### [Page link](https://malelus-quizzical.netlify.app/)
+> ### [Page link](https://quizzical.mndev.eu)
 
 ---
 

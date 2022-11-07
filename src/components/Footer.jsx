@@ -6,11 +6,11 @@ const Footer = () => {
   return (
     <>
       <footer className={`footer ${showFooter ? 'footer--visible' : ''}`} onBlur={() => setShowFooter(false)}>
-        <a href='https://github.com/Malelus' target='_blank' className='btn btn--icon'>
+        <a href='https://github.mndev.eu' target='_blank' className='btn btn--icon'>
           Author <i className='fa-brands fa-github' />
         </a>
 
-        <a href='https://github.com/Malelus/Quizzical' target='_blank' className='btn btn--icon'>
+        <a href='https://github.mndev.eu/Quizzical' target='_blank' className='btn btn--icon'>
           Project <i className='fa-brands fa-github' />
         </a>
 
